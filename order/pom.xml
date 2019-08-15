@@ -54,6 +54,17 @@
 			<artifactId>sharding-jdbc-spring-boot-starter</artifactId>
 			<version>3.1.0</version>
 		</dependency>
+		<dependency>
+			<groupId>io.shardingsphere</groupId>
+			<artifactId>sharding-transaction-spring-boot-starter</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.shardingsphere</groupId>
+			<artifactId>sharding-transaction-2pc-xa</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>com.alibaba</groupId>
