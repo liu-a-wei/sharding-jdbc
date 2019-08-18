@@ -30,7 +30,7 @@ public class OrderApplicationTests {
 		UserOrder userOrder = new UserOrder();
 		for (int i = 1; i < 10; i++) {
 			userOrder = new UserOrder();
-			userOrder.setId(Long.parseLong(String.valueOf(System.currentTimeMillis())+i));
+			userOrder.setId(System.currentTimeMillis()+i);
 			userOrder.setMchId("mchId"+i);
 			userOrder.setOrderNo("orderNo"+i);
 			userOrder.setSkuId("skuId"+i);
