@@ -69,5 +69,60 @@ public class OrderApplicationTests {
 		}
 	}
 	
+	@Test
+	public void saveOrder(){
+		MachineOrder machineOrder = new MachineOrder();
+		machineOrder.setUserName("username:"+System.currentTimeMillis());
+		machineOrder.setRootOrgId(1);
+		machineOrder.setOrderId(0515);
+		machineOrder.setId(TradeKeyGenerator.generateKey(ShardingTradeEnum.TRADE_ORDER, "51800000"));
+		
+		MachineOnlinePay machineOnlinePay = new MachineOnlinePay();
+		machineOnlinePay.setUserName("username:"+System.currentTimeMillis());
+		machineOnlinePay.setRootOrgId(2);
+		machineOnlinePay.setOutOrderNo(987654321L);
+		machineOnlinePay.setPayType("paytype");
+		machineOnlinePay.setId(TradeKeyGenerator.generateKey(ShardingTradeEnum.TRADE_PAY, "51800000"));
+		
+		machineOrderServiceImpl.saveOrder(machineOrder, machineOnlinePay);
+	}
+	
+	@Test
+	public void saveOrderFailByLocal(){
+		MachineOrder machineOrder = new MachineOrder();
+		Long time = System.currentTimeMillis();
+		machineOrder.setUserName("username:local:"+time);
+		machineOrder.setRootOrgId(1);
+		machineOrder.setOrderId(987654321);
+		machineOrder.setId(TradeKeyGenerator.generateKey(ShardingTradeEnum.TRADE_ORDER, "51800000"));
+		
+		MachineOnlinePay machineOnlinePay = new MachineOnlinePay();
+		machineOnlinePay.setUserName("username:local:"+time);
+		machineOnlinePay.setRootOrgId(2);
+		machineOnlinePay.setOutOrderNo(System.currentTimeMillis());
+		machineOnlinePay.setPayType("paytype");
+		machineOnlinePay.setId(TradeKeyGenerator.generateKey(ShardingTradeEnum.TRADE_PAY, "51800000"));
+		
+		machineOrderServiceImpl.saveOrderFailByLocal(machineOrder, machineOnlinePay);
+	}
+	
+	@Test
+	public void saveOrderFailByXa(){
+		MachineOrder machineOrder = new MachineOrder();
+		Long time = System.currentTimeMillis();
+		machineOrder.setUserName("username:xa:"+time);
+		machineOrder.setRootOrgId(1);
+		machineOrder.setOrderId(0515);
+		machineOrder.setId(TradeKeyGenerator.generateKey(ShardingTradeEnum.TRADE_ORDER, "51800000"));
+		
+		MachineOnlinePay machineOnlinePay = new MachineOnlinePay();
+		machineOnlinePay.setUserName("username:xa:"+time);
+		machineOnlinePay.setRootOrgId(2);
+		machineOnlinePay.setOutOrderNo(987654321L);
+		machineOnlinePay.setPayType("paytype");
+		machineOnlinePay.setId(TradeKeyGenerator.generateKey(ShardingTradeEnum.TRADE_PAY, "51800000"));
+		
+		machineOrderServiceImpl.saveOrderFailByXa(machineOrder, machineOnlinePay);
+	}
 	
 }

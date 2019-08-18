@@ -1,4 +1,4 @@
-package cn.liuawei.sharding.algorithm.sharding.algorithm;
+package cn.lerke.sharding.algorithm.trade;
 
 import java.util.Collection;
 
@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.liuawei.sharding.algorithm.sharding.ShardingConstant;
 import io.shardingsphere.api.algorithm.sharding.PreciseShardingValue;
 import io.shardingsphere.api.algorithm.sharding.standard.PreciseShardingAlgorithm;
 
